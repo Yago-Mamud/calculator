@@ -16,11 +16,23 @@ document.querySelectorAll(".calcButton").forEach((calcButton) => {
 const calcHandler = document.getElementById("calcHandler");
 calcHandler.addEventListener("click", () => {
 	const expression = equation.join('');
-	const result = new Function(`return ${expression}`)();
-	childRemoval();
-	createOutput(result);
-	equation.length = 0
-	preview.innerText = "0";
+	let result;
+	try { 
+		result = new Function(`return ${expression}`)();
+	} catch {
+		result = undefined;
+	}
+	if (result === undefined) {
+		alert("ERROR: SOMETHING WENT WRONG");
+		equation.length = 0
+		preview.innerText = "0";
+		return false
+	} else {
+		childRemoval();
+		createOutput(result);
+		equation.length = 0
+		preview.innerText = "0";
+	}
 });
 //adds the append child
 const outputContainer = document.getElementById("outputContainer");
