@@ -12,25 +12,33 @@
 	</header>
 	<main>
 		<!-- INPUT CONTAINER -->
-		<div class="container">
-			<button class="calcButton" value="1">1</button>
-			<button class="calcButton" value="2">2</button>
-			<button class="calcButton" value="3">3</button>
-			<button class="calcButton" value="4">4</button>
-			<button class="calcButton" value="5">5</button>
-			<button class="calcButton" value="6">6</button>
-			<button class="calcButton" value="7">7</button>
-			<button class="calcButton" value="8">8</button>
-			<button class="calcButton" value="9">9</button>
-			<button class="calcButton" value="+">Plus</button>
-			<button class="calcButton" value="-">Minus</button>
-			<button class="calcButton" value="*">Times</button>
-			<button class="calcButton" value="/">Divison</button>
+		<div class="container calcCont">
+			<div class="preview">
+				<h1 id="preview">0</h1>
+			</div>
+			<div class="calculator">
+				<button class="calcButton" value="1">1</button>
+				<button class="calcButton" value="2">2</button>
+				<button class="calcButton" value="3">3</button>
+				<button class="calcButton" value="4">4</button>
+				<button class="calcButton" value="5">5</button>
+				<button class="calcButton" value="6">6</button>
+				<button class="calcButton" value="7">7</button>
+				<button class="calcButton" value="8">8</button>
+				<button class="calcButton" value="9">9</button>
+				<button class="calcButton" value="0">0</button>
+			</div>
+			<div class="operations">
+				<button class="calcButton" value="+">Plus</button>
+				<button class="calcButton" value="-">Minus</button>
+				<button class="calcButton" value="*">Times</button>
+				<button class="calcButton" value="/">Divison</button>
+				<button id="backspace">Backspace</button>
+				<button id="calcHandler">Calculate</button>
+			</div>
 		</div>
-		<button id="calcHandler">calculate</button>
 		<!-- OUTPUT CONTAINER -->
 		<div class="container" id="outputContainer">
-			<h1>Output</h1>
 			
 		</div>
 	</main>
