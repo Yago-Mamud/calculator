@@ -3,7 +3,15 @@ const preview = document.getElementById("preview");
 //handles buttons ( keyboard )
 document.addEventListener("keydown", (keyPressed) => {
 	if (keyPressed.key >= "0" && keyPressed.key <= "9") {
-		equation.push(keyPressed.key);
+		if (equation.length >= 32) {
+			alert("ERROR: FULL ARRAY");
+			return false;
+		} else {
+			equation.push(keyPressed.key);
+			previewFunction();
+		}
+	} else if (keyPressed.key = "Backspace") {
+		equation.pop();
 		previewFunction();
 	}
 });
