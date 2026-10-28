@@ -1,6 +1,13 @@
 let equation = [];
 const preview = document.getElementById("preview");
-//handles the buttons
+//handles buttons ( keyboard )
+document.addEventListener("keydown", (keyPressed) => {
+	if (keyPressed.key >= "0" && keyPressed.key <= "9") {
+		equation.push(keyPressed.key);
+		previewFunction();
+	}
+});
+//handles the buttons ( clickable )
 document.querySelectorAll(".calcButton").forEach((calcButton) => {
 	calcButton.addEventListener("click", () => {
 		if (equation.length >= 32) {
@@ -28,27 +35,10 @@ calcHandler.addEventListener("click", () => {
 		preview.innerText = "0";
 		return false
 	} else {
-		childRemoval();
-		createOutput(result);
 		equation.length = 0
-		preview.innerText = "0";
+		preview.innerText = result;
 	}
 });
-//adds the append child
-const outputContainer = document.getElementById("outputContainer");
-const createOutput = created => {
-	const newMark = document.createElement("p");
-	newMark.textContent = String(created);
-	newMark.classList.add("outputC");
-	outputContainer.appendChild(newMark);
-}
-//removes every child
-const childRemoval = tbRemoved => {
-	const cChild = document.querySelectorAll(".outputC");
-	cChild.forEach ((childRemoved) => {
-		outputContainer.removeChild(childRemoved);
-	});
-};
 //backspace 
 const backspace = document.getElementById("backspace");
 backspace.addEventListener("click", () => {

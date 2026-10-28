@@ -58,10 +58,8 @@ header h1 {
 }
 /* BODY */
 main {
-	display: grid;
-	grid-template-columns: 70% 1fr;
-	padding: 1rem 4rem;
-	align-items: center;
+	display: flex;
+	padding: 1rem;
 	gap: 1rem;
 	flex: 1;
 }
@@ -89,6 +87,8 @@ main {
 .calcCont {
 	display: grid;
 	grid-template-columns: 80% 1fr;
+	flex: 1;
+	height: 100%;
 }
 .calculator {
 	display: grid;
@@ -104,6 +104,9 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+.preview {
+	min-height: 6rem;
 }
 /* INTERACTIONS */
 input {
@@ -128,6 +131,13 @@ input, button {
 .calcButton, #calcHandler, #backspace {
 	height: 100%;
 	width: 100%;
+}
+#calcHandler {
+	background-color: #00AA55; 
+	border-color: #00CC22;
+}
+#calcHandler:hover {
+	opacity: 0.9;
 }
 .calcCont div:nth-child(1) {
 	grid-column: span 2;
