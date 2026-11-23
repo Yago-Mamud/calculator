@@ -134,7 +134,7 @@ input, button {
 }
 #calcHandler {
 	background-color: #00AA55; 
-	border-color: #00CC22;
+	border-color: #009900;
 }
 #calcHandler:hover {
 	opacity: 0.9;
