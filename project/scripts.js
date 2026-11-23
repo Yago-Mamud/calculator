@@ -14,10 +14,19 @@ document.addEventListener("keydown", (keyPressed) => {
 		equation.pop();
 		previewFunction();
 	} else if (keyPressed.key == "+" || keyPressed.key == "*" || keyPressed.key == "/" || keyPressed.key == "-"){
-		equation.push(keyPressed.key);
-		previewFunction();
+		if (keyPressed.key == equation.at(-1)) {
+			return false;
+		} else {
+			equation.push(keyPressed.key);
+			previewFunction();
+		};
 	} else if (keyPressed.key == "x") {
 		equation.push("*");
+		previewFunction();
+	} else if (keyPressed.key == "Enter") {
+		calculate();
+	} else if (keyPressed.key == "Escape") {
+		equation.length = 0;
 		previewFunction();
 	}
 });
@@ -42,8 +51,11 @@ backspace.addEventListener("click", () => {
 });
 //
 //HANDLES CALCULATIONS
+//
 const calcHandler = document.getElementById("calcHandler");
-calcHandler.addEventListener("click", () => {
+calcHandler.addEventListener("click", () => { calculate() });
+//
+function calculate() {
 	const expression = equation.join('');
 	let result;
 	try { 
@@ -60,8 +72,12 @@ calcHandler.addEventListener("click", () => {
 		equation.length = 0
 		preview.innerText = result;
 	}
-});
+}
 //PREVIEW HANDLER
 function previewFunction() {
-	preview.innerText = equation.join("").replace(/[,]/g, "");
+	if (equation.length == 0) {
+		preview.innerText = "0";
+	} else {
+		preview.innerText = equation.join("").replace(/[,]/g, "");
+	}
 }
