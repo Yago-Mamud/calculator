@@ -1,6 +1,6 @@
 let equation = [];
 const preview = document.getElementById("preview");
-//handles buttons ( keyboard )
+//KEYBOARD INPUTS
 document.addEventListener("keydown", (keyPressed) => {
 	if (keyPressed.key >= "0" && keyPressed.key <= "9") {
 		if (equation.length >= 32) {
@@ -10,12 +10,19 @@ document.addEventListener("keydown", (keyPressed) => {
 			equation.push(keyPressed.key);
 			previewFunction();
 		}
-	} else if (keyPressed.key = "Backspace") {
+	} else if (keyPressed.key == "Backspace") {
 		equation.pop();
+		previewFunction();
+	} else if (keyPressed.key == "+" || keyPressed.key == "*" || keyPressed.key == "/" || keyPressed.key == "-"){
+		equation.push(keyPressed.key);
+		previewFunction();
+	} else if (keyPressed.key == "x") {
+		equation.push("*");
 		previewFunction();
 	}
 });
-//handles the buttons ( clickable )
+//CLICKABLE INPUT
+//numbers
 document.querySelectorAll(".calcButton").forEach((calcButton) => {
 	calcButton.addEventListener("click", () => {
 		if (equation.length >= 32) {
@@ -27,7 +34,14 @@ document.querySelectorAll(".calcButton").forEach((calcButton) => {
 		}
 	});
 });
-//handles calculations
+//backspace
+const backspace = document.getElementById("backspace");
+backspace.addEventListener("click", () => {
+	equation.pop();
+	previewFunction();
+});
+//
+//HANDLES CALCULATIONS
 const calcHandler = document.getElementById("calcHandler");
 calcHandler.addEventListener("click", () => {
 	const expression = equation.join('');
@@ -47,13 +61,7 @@ calcHandler.addEventListener("click", () => {
 		preview.innerText = result;
 	}
 });
-//backspace 
-const backspace = document.getElementById("backspace");
-backspace.addEventListener("click", () => {
-	equation.pop();
-	previewFunction();
-});
-//preview handler
+//PREVIEW HANDLER
 function previewFunction() {
 	preview.innerText = equation.join("").replace(/[,]/g, "");
 }
