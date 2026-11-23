@@ -11,24 +11,28 @@ document.addEventListener("keydown", (keyPressed) => {
 			equation.push(keyPressed.key);
 			previewFunction();
 		}
-	} else if (keyPressed.key == "Backspace") {
-		equation.pop();
-		previewFunction();
-	} else if (specialKeys.includes(keyPressed.key)){
+	} 
+	if (specialKeys.includes(keyPressed.key)){
 		if (specialKeys.includes(equation.at(-1))) {
 			return false;
 		} else {
 			equation.push(keyPressed.key);
 			previewFunction();
 		};
-	} else if (keyPressed.key == "x") {
-		equation.push("*");
-		previewFunction();
-	} else if (keyPressed.key == "Enter") {
-		calculate();
-	} else if (keyPressed.key == "Escape") {
-		equation.length = 0;
-		previewFunction();
+	} else {
+		switch (keyPressed.key) {
+			case "Backspace":
+				equation.pop();
+				previewFunction();
+			break;
+			case "Enter":
+				calculate();
+			break;
+			case "Escape":
+				equation.length = 0;
+				previewFunction();
+			break;
+		}
 	}
 });
 //CLICKABLE INPUT
