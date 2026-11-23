@@ -1,4 +1,5 @@
 let equation = [];
+const specialKeys = ["+", "*", "/", "-", "."];
 const preview = document.getElementById("preview");
 //KEYBOARD INPUTS
 document.addEventListener("keydown", (keyPressed) => {
@@ -13,8 +14,8 @@ document.addEventListener("keydown", (keyPressed) => {
 	} else if (keyPressed.key == "Backspace") {
 		equation.pop();
 		previewFunction();
-	} else if (keyPressed.key == "+" || keyPressed.key == "*" || keyPressed.key == "/" || keyPressed.key == "-"){
-		if (keyPressed.key == equation.at(-1)) {
+	} else if (specialKeys.includes(keyPressed.key)){
+		if (specialKeys.includes(equation.at(-1))) {
 			return false;
 		} else {
 			equation.push(keyPressed.key);
@@ -38,9 +39,18 @@ document.querySelectorAll(".calcButton").forEach((calcButton) => {
 			alert("ERROR: FULL ARRAY");
 			return false;
 		} else {
-			equation.push(calcButton.value);
-			previewFunction();
-		}
+			if (specialKeys.includes(calcButton.value)) {
+				if (specialKeys.includes(equation.at(-1))) {
+					return false;
+				} else {
+					equation.push(calcButton.value);
+					previewFunction();
+				}
+			} else {
+				equation.push(calcButton.value);
+				previewFunction();
+			}
+		} 
 	});
 });
 //backspace
