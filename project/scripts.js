@@ -1,5 +1,5 @@
 let equation = [];
-const specialKeys = ["+", "*", "/", "-", "."];
+const specialKeys = ["+", "*", "/", "-", ".","**"];
 const preview = document.getElementById("preview");
 //KEYBOARD INPUTS
 document.addEventListener("keydown", (keyPressed) => {
@@ -61,6 +61,12 @@ document.querySelectorAll(".calcButton").forEach((calcButton) => {
 const backspace = document.getElementById("backspace");
 backspace.addEventListener("click", () => {
 	equation.pop();
+	previewFunction();
+});
+//clear all
+const deleteAll = document.getElementById("escape");
+deleteAll.addEventListener("click", () => {
+	equation.length = 0;
 	previewFunction();
 });
 //
